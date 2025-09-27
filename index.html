@@ -1,0 +1,233 @@
+<!-- Save this as index.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NOT HUMEN ⚡ — Official</title>
+  <meta name="description" content="NOT HUMEN Guild — Join the ultimate Free Fire community. Rankings, events, giveaways & trusted members."/>
+  <style>
+    /* ====== Reset & Base ====== */
+    :root{
+      --bg:#07060a;
+      --panel:#0f1116;
+      --muted:#9aa0a6;
+      --accent:#ffd24d; /* gold */
+      --glow: rgba(255,210,77,0.14);
+      --accent-2: #7afcff; /* cyan accent */
+      --card: linear-gradient(135deg, rgba(255,210,77,0.04), rgba(255,255,255,0.02));
+      --glass: rgba(255,255,255,0.02);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(122,252,255,0.03), transparent),
+                  radial-gradient(1000px 500px at 90% 90%, rgba(255,210,77,0.02), transparent),
+                  var(--bg);
+      color:#e6eef8;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:28px;
+      line-height:1.4;
+    }
+
+    /* Container */
+    .wrap{max-width:1100px;margin:0 auto;}
+
+    /* Header */
+    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+    .brand{display:flex;align-items:center;gap:14px}
+    .logo{
+      width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:flex;align-items:center;justify-content:center;color:#111;font-weight:800;box-shadow:0 6px 30px var(--glow);
+      font-family:monospace;
+    }
+    .brand h1{font-size:20px;letter-spacing:0.6px}
+    .nav{display:flex;gap:12px;align-items:center}
+    .btn{
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      color:#081018;padding:10px 14px;border-radius:10px;font-weight:700;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,0.5);
+    }
+    .ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:10px;color:var(--muted);text-decoration:none}
+
+    /* Hero */
+    .hero{
+      display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-bottom:28px;
+    }
+    .hero-left h2{font-size:34px;margin-bottom:8px}
+    .hero-left p{color:var(--muted);margin-bottom:18px}
+    .ctas{display:flex;gap:12px}
+    .stat-row{display:flex;gap:12px;margin-top:18px}
+    .stat{background:var(--panel);padding:12px;border-radius:12px;min-width:120px;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,0.6)}
+    .stat b{display:block;font-size:18px}
+    /* Card */
+    .card{background:var(--card);padding:18px;border-radius:14px;border:1px solid rgba(255,255,255,0.03)}
+
+    /* Leaderboard */
+    .board{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .slot{display:flex;justify-content:space-between;padding:10px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.02)}
+    .slot .pos{font-weight:800;color:var(--accent);min-width:46px}
+    .slot .name{flex:1;padding-left:8px;color:#dfe9ff}
+    .slot .pct{min-width:48px;text-align:right;color:var(--muted)}
+
+    /* Features */
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+    .feature{padding:14px;border-radius:12px;background:linear-gradient(135deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));border:1px solid rgba(255,255,255,0.03)}
+    .feature h4{margin-bottom:6px}
+
+    /* Footer */
+    footer{margin-top:26px;padding:14px;text-align:center;color:var(--muted);font-size:14px}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;gap:18px}
+      .board{grid-template-columns:1fr}
+      .features{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width:560px){
+      .features{grid-template-columns:1fr}
+      .nav{display:none}
+      .logo{width:48px;height:48px}
+      .hero-left h2{font-size:26px}
+    }
+
+    /* small glow effect for headings */
+    .glow{color:var(--accent);text-shadow:0 6px 28px rgba(255,210,77,0.12)}
+    .muted{color:var(--muted)}
+    .small{font-size:13px;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <!-- Header -->
+    <header>
+      <div class="brand">
+        <div class="logo">NH</div>
+        <div>
+          <h1>NOT HUMEN ⚡</h1>
+          <div class="small">Official Guild • Syco</div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a class="ghost" href="#ranking">Ranking</a>
+        <a class="ghost" href="#events">Events</a>
+        <a class="ghost" href="#join">Join</a>
+        <a class="btn" href="https://discord.gg/fPmvEtD953" target="_blank">Join Discord</a>
+      </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-left">
+        <h2 class="glow">Join NOT HUMEN ⚡ — Dominate & Rise</h2>
+        <p class="muted">Official Free Fire guild. Tournaments, verified members, daily rankings and exclusive rewards. Join the squad, prove your skill, and climb the leaderboard.</p>
+        <div class="ctas">
+          <a class="btn" href="https://discord.gg/fPmvEtD953" target="_blank">Join Discord</a>
+          <a class="ghost" href="https://youtu.be/lNXYOERUxjo?si=lqP2DA1hxXtgf68D" target="_blank">Watch Video</a>
+        </div>
+
+        <div class="stat-row">
+          <div class="stat card"><small class="small">Members</small><b id="stat-members">1,240</b></div>
+          <div class="stat card"><small class="small">Active Today</small><b id="stat-active">320</b></div>
+          <div class="stat card"><small class="small">Next Event</small><b id="stat-event">GvG • 8:30 PM</b></div>
+        </div>
+
+        <div style="margin-top:16px" class="card small">
+          <strong>How alignment works:</strong> All members will be tested at the scheduled time. API and match results are used to create the official ranking. Final positions are posted here — no debates.
+        </div>
+      </div>
+
+      <aside>
+        <div class="card">
+          <h3 class="small">Top 24 — Live Alignment</h3>
+          <div class="board" id="leaderboard">
+            <!-- 24 editable slots inserted by JS -->
+          </div>
+          <div style="margin-top:10px" class="small muted">Tip: After tests, edit names and percentages directly in the admin panel (or replace in HTML).</div>
+        </div>
+
+        <div class="card" style="margin-top:12px">
+          <h4 class="small">Quick Links</h4>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
+            <a class="ghost" href="#rules">Rules</a>
+            <a class="ghost" href="#whitelist">Whitelisted</a>
+            <a class="ghost" href="#gvg">GvG Victories</a>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Features -->
+    <section id="features" style="margin-top:18px;">
+      <div class="features">
+        <div class="feature card">
+          <h4>Verified Whitelist</h4>
+          <div class="muted small">Trusted members only — owner-approved accounts with special perks.</div>
+        </div>
+        <div class="feature card">
+          <h4>Daily Rankings</h4>
+          <div class="muted small">Alignment tests produce a ranked board updated after each session.</div>
+        </div>
+        <div class="feature card">
+          <h4>Events & Giveaways</h4>
+          <div class="muted small">Regular GvG events, tournaments, and rewards for top players.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Rules / Notice -->
+    <section id="rules" style="margin-top:18px;">
+      <div class="card">
+        <h3 class="small">Rules & Conduct</h3>
+        <ul class="small muted" style="margin-top:10px;line-height:1.6">
+          <li>No cheating, panels, or hacking discussions.</li>
+          <li>Only winning screenshots in dedicated channels.</li>
+          <li>Respect admins & final rankings — no arguments.</li>
+          <li>Whitelist is owner-approved only; violations lead to removal.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Contact / Join -->
+    <section id="join" style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap">
+      <div class="card" style="flex:1;min-width:280px">
+        <h3 class="small">Want to join?</h3>
+        <p class="muted small">Click Join Discord and follow instructions — verify and attend alignment tests to earn ranking.</p>
+        <a class="btn" href="https://discord.gg/fPmvEtD953" target="_blank">Join Discord</a>
+      </div>
+
+      <div class="card" style="flex:1;min-width:280px">
+        <h3 class="small">Owner Channel</h3>
+        <p class="muted small">YouTube</p>
+        <a class="ghost" href="https://youtu.be/lNXYOERUxjo?si=lqP2DA1hxXtgf68D" target="_blank">Watch</a>
+      </div>
+    </section>
+
+    <footer>
+      NOT HUMEN ⚡ • Built for competitive players • © <span id="year"></span>
+    </footer>
+  </div>
+
+  <script>
+    // Populate top-24 leaderboard slots (editable in DOM or replaced programmatically)
+    const board = document.getElementById('leaderboard');
+    for(let i=1;i<=24;i++){
+      const slot = document.createElement('div');
+      slot.className = 'slot';
+      slot.innerHTML = '<div class="pos">#'+i+'</div><div class="name">__________</div><div class="pct">__%</div>';
+      board.appendChild(slot);
+    }
+
+    // Small helpers (replaceable by real data later)
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    /* HOW TO EDIT:
+       - To change the top slots text: edit the innerText of .slot .name and .pct, or modify the HTML directly.
+       - To change invite links: replace the href values to your Discord/YouTube.
+       - If you want two-column compact leaderboard, adjust CSS .board grid-template-columns.
+    */
+  </script>
+</body>
+</html>
