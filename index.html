@@ -1,207 +1,270 @@
-<!-- Save this as index.html -->
+<!-- save as index.html -->
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>NOT HUMEN ⚡ — Official</title>
-  <meta name="description" content="NOT HUMEN Guild — Join the ultimate Free Fire community. Rankings, events, giveaways & trusted members."/>
+  <meta name="description" content="NOT HUMEN Guild — Official single-page site. Join, view tournaments, rankings & more."/>
   <style>
-    /* ====== Reset & Base ====== */
     :root{
-      --bg:#07060a;
-      --panel:#0f1116;
+      --bg1:#020617;
+      --bg2:#081226;
+      --accent:#00c6ff;
+      --accent-2:#0072ff;
+      --glow: rgba(0,198,255,0.28);
       --muted:#9aa0a6;
-      --accent:#ffd24d; /* gold */
-      --glow: rgba(255,210,77,0.14);
-      --accent-2: #7afcff; /* cyan accent */
-      --card: linear-gradient(135deg, rgba(255,210,77,0.04), rgba(255,255,255,0.02));
-      --glass: rgba(255,255,255,0.02);
+      --card: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
     }
+    /* Reset */
     *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%}
+    html{scroll-behavior:smooth}
     body{
-      background: radial-gradient(1200px 600px at 10% 10%, rgba(122,252,255,0.03), transparent),
-                  radial-gradient(1000px 500px at 90% 90%, rgba(255,210,77,0.02), transparent),
-                  var(--bg);
-      color:#e6eef8;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      min-height:100vh;
+      background:
+        radial-gradient(800px 400px at 10% 10%, rgba(0,198,255,0.04), transparent),
+        radial-gradient(700px 350px at 90% 90%, rgba(0,120,255,0.03), transparent),
+        linear-gradient(135deg,var(--bg1),var(--bg2));
+      color:#e7f6ff;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
       -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      padding:28px;
-      line-height:1.4;
+      padding:22px;
+      line-height:1.45;
     }
 
-    /* Container */
-    .wrap{max-width:1100px;margin:0 auto;}
-
-    /* Header */
-    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
-    .brand{display:flex;align-items:center;gap:14px}
+    /* Layout */
+    .wrap{max-width:1100px;margin:0 auto}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 4px}
+    .brand{display:flex;align-items:center;gap:12px}
     .logo{
-      width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));
-      display:flex;align-items:center;justify-content:center;color:#111;font-weight:800;box-shadow:0 6px 30px var(--glow);
+      width:56px;height:56px;border-radius:12px;
+      display:flex;align-items:center;justify-content:center;font-weight:800;color:#021428;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      box-shadow:0 8px 40px var(--glow);
       font-family:monospace;
     }
-    .brand h1{font-size:20px;letter-spacing:0.6px}
-    .nav{display:flex;gap:12px;align-items:center}
-    .btn{
+    .brand h1{font-size:18px}
+    nav{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+    .nav-link{
+      padding:8px 12px;border-radius:10px;text-decoration:none;color:var(--muted);
+      border:1px solid rgba(255,255,255,0.03);
+      transition:all .22s;
+      font-weight:600;font-size:13px;
+    }
+    .nav-link:hover{color:#fff;border-color:var(--accent);transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,140,255,0.08)}
+    .big-btn{
       background:linear-gradient(90deg,var(--accent),var(--accent-2));
-      color:#081018;padding:10px 14px;border-radius:10px;font-weight:700;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,0.5);
+      color:#041025;padding:10px 16px;border-radius:12px;font-weight:800;text-decoration:none;
+      box-shadow:0 14px 40px rgba(0,198,255,0.12);
     }
-    .ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:10px;color:var(--muted);text-decoration:none}
+    .hero{display:grid;grid-template-columns:1fr 400px;gap:24px;align-items:center;margin:28px 0}
+    .hero h2{font-size:32px;color:var(--accent);text-shadow:0 10px 40px rgba(0,198,255,0.06)}
+    .hero p{color:var(--muted);max-width:640px}
+    .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
 
-    /* Hero */
-    .hero{
-      display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-bottom:28px;
-    }
-    .hero-left h2{font-size:34px;margin-bottom:8px}
-    .hero-left p{color:var(--muted);margin-bottom:18px}
-    .ctas{display:flex;gap:12px}
-    .stat-row{display:flex;gap:12px;margin-top:18px}
-    .stat{background:var(--panel);padding:12px;border-radius:12px;min-width:120px;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,0.6)}
-    .stat b{display:block;font-size:18px}
-    /* Card */
     .card{background:var(--card);padding:18px;border-radius:14px;border:1px solid rgba(255,255,255,0.03)}
+    .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:18px 0}
+    .stat{
+      padding:18px;border-radius:12px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,0.5);
+      transition:transform .25s, box-shadow .25s;
+      background:linear-gradient(180deg,rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+      border:1px solid rgba(255,255,255,0.02);
+    }
+    .stat h3{font-size:28px;color:var(--accent);margin-bottom:6px}
+    .stat p{color:var(--muted)}
+    .stat:hover{transform:translateY(-6px);box-shadow:0 16px 50px rgba(0,198,255,0.12)}
 
     /* Leaderboard */
-    .board{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-    .slot{display:flex;justify-content:space-between;padding:10px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.02)}
-    .slot .pos{font-weight:800;color:var(--accent);min-width:46px}
-    .slot .name{flex:1;padding-left:8px;color:#dfe9ff}
-    .slot .pct{min-width:48px;text-align:right;color:var(--muted)}
+    #leaderboard{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
+    .slot{display:flex;align-items:center;gap:12px;padding:10px;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.02)}
+    .pos{font-weight:800;color:var(--accent);min-width:56px;text-align:center}
+    .name{flex:1;color:#dff6ff}
+    .pct{min-width:54px;text-align:right;color:var(--muted)}
 
-    /* Features */
-    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
-    .feature{padding:14px;border-radius:12px;background:linear-gradient(135deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));border:1px solid rgba(255,255,255,0.03)}
-    .feature h4{margin-bottom:6px}
+    /* Tournaments */
+    .tournaments{margin-top:18px;display:grid;gap:12px}
+    .t-item{padding:16px;border-radius:12px;background:linear-gradient(145deg, rgba(0,0,0,0.35), rgba(0,0,0,0.2));border:1px solid rgba(255,255,255,0.03)}
+    .t-title{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .soon{font-size:12px;padding:4px 8px;border-radius:8px;background:#222;color:#ccc}
+    .apply{margin-top:10px;display:flex;gap:10px;align-items:center}
+    .apply .apply-btn{
+      padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      color:#021428;font-weight:800;text-decoration:none;border:none;cursor:pointer;box-shadow:0 10px 30px rgba(0,198,255,0.12);
+      transition:transform .18s, box-shadow .18s;
+    }
+    .apply .apply-btn:hover{transform:scale(1.04);box-shadow:0 18px 50px rgba(0,198,255,0.24)}
+    .apply-links{display:none;margin-top:10px;gap:10px;flex-wrap:wrap}
+    .social-btn{
+      display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:10px;color:#fff;text-decoration:none;font-weight:700;
+      transition:transform .18s, box-shadow .18s, filter .18s;
+      position:relative;overflow:hidden;
+    }
+    .social-btn svg{width:18px;height:18px;filter:drop-shadow(0 6px 18px rgba(0,0,0,0.6))}
+    /* shine animation */
+    .social-btn::before{
+      content:"";position:absolute;top:0;left:-120%;width:40%;height:100%;background:linear-gradient(90deg,rgba(255,255,255,0.2),rgba(255,255,255,0.05));transform:skewX(-20deg);
+      transition:all .6s;opacity:0;
+    }
+    .social-btn:hover::before{left:120%;opacity:1}
+    .discord{background:linear-gradient(90deg,#4e63e9,#5865f2);box-shadow:0 10px 30px rgba(78,99,233,0.14)}
+    .whatsapp{background:linear-gradient(90deg,#0fb86c,#25d366);box-shadow:0 10px 30px rgba(37,211,102,0.12)}
+    .youtube{background:linear-gradient(90deg,#ff3b3b,#ff0000);box-shadow:0 10px 30px rgba(255,0,0,0.12)}
+
+    /* Events */
+    .events-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px}
+    .event{padding:12px;border-radius:12px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.02)}
+
+    /* Join / About */
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .contact a{display:inline-block;margin-top:8px;padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#021428;font-weight:800;text-decoration:none}
 
     /* Footer */
-    footer{margin-top:26px;padding:14px;text-align:center;color:var(--muted);font-size:14px}
+    footer{margin-top:28px;text-align:center;color:var(--muted);font-size:13px;padding-bottom:14px}
 
     /* Responsive */
-    @media (max-width:980px){
-      .hero{grid-template-columns:1fr;gap:18px}
-      .board{grid-template-columns:1fr}
-      .features{grid-template-columns:1fr 1fr}
+    @media(max-width:980px){
+      .hero{grid-template-columns:1fr}
+      #leaderboard{grid-template-columns:1fr}
+      .two-col{grid-template-columns:1fr}
     }
-    @media (max-width:560px){
-      .features{grid-template-columns:1fr}
-      .nav{display:none}
-      .logo{width:48px;height:48px}
-      .hero-left h2{font-size:26px}
-    }
-
-    /* small glow effect for headings */
-    .glow{color:var(--accent);text-shadow:0 6px 28px rgba(255,210,77,0.12)}
-    .muted{color:var(--muted)}
-    .small{font-size:13px;color:var(--muted)}
   </style>
 </head>
 <body>
   <div class="wrap">
-    <!-- Header -->
+    <!-- HEADER -->
     <header>
       <div class="brand">
         <div class="logo">NH</div>
         <div>
           <h1>NOT HUMEN ⚡</h1>
-          <div class="small">Official Guild • Syco</div>
+          <div style="font-size:13px;color:var(--muted)">Official Guild • Syco</div>
         </div>
       </div>
 
-      <nav class="nav">
-        <a class="ghost" href="#ranking">Ranking</a>
-        <a class="ghost" href="#events">Events</a>
-        <a class="ghost" href="#join">Join</a>
-        <a class="btn" href="https://discord.gg/fPmvEtD953" target="_blank">Join Discord</a>
+      <nav>
+        <a class="nav-link" href="#ranking">Ranking</a>
+        <a class="nav-link" href="#tournaments">Tournaments</a>
+        <a class="nav-link" href="#events">Events</a>
+        <a class="nav-link" href="#join">Join</a>
+        <a class="big-btn" href="https://discord.gg/fPmvEtD953" target="_blank">Join Discord</a>
       </nav>
     </header>
 
-    <!-- Hero -->
-    <section class="hero">
-      <div class="hero-left">
-        <h2 class="glow">Join NOT HUMEN ⚡ — Dominate & Rise</h2>
-        <p class="muted">Official Free Fire guild. Tournaments, verified members, daily rankings and exclusive rewards. Join the squad, prove your skill, and climb the leaderboard.</p>
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div>
+        <h2>Join NOT HUMEN ⚡ — Dominate & Rise</h2>
+        <p>Official Free Fire guild — tournaments, verified members, rankings & exclusive rewards. Pro design, live counters and glowing UI.</p>
         <div class="ctas">
-          <a class="btn" href="https://discord.gg/fPmvEtD953" target="_blank">Join Discord</a>
-          <a class="ghost" href="https://youtu.be/lNXYOERUxjo?si=lqP2DA1hxXtgf68D" target="_blank">Watch Video</a>
-        </div>
-
-        <div class="stat-row">
-          <div class="stat card"><small class="small">Members</small><b id="stat-members">1,240</b></div>
-          <div class="stat card"><small class="small">Active Today</small><b id="stat-active">320</b></div>
-          <div class="stat card"><small class="small">Next Event</small><b id="stat-event">GvG • 8:30 PM</b></div>
-        </div>
-
-        <div style="margin-top:16px" class="card small">
-          <strong>How alignment works:</strong> All members will be tested at the scheduled time. API and match results are used to create the official ranking. Final positions are posted here — no debates.
+          <a class="big-btn" href="https://discord.gg/fPmvEtD953" target="_blank">Join Discord</a>
+          <a class="nav-link" href="https://youtu.be/lNXYOERUxjo?si=lqP2DA1hxXtgf68D" target="_blank">YouTube</a>
+          <a class="nav-link" href="#tournaments">View Tournaments</a>
         </div>
       </div>
 
-      <aside>
-        <div class="card">
-          <h3 class="small">Top 24 — Live Alignment</h3>
-          <div class="board" id="leaderboard">
-            <!-- 24 editable slots inserted by JS -->
+      <aside class="card">
+        <!-- Live stats -->
+        <div class="stats" aria-hidden="false">
+          <div class="stat">
+            <h3 id="members">0</h3>
+            <p>Members</p>
           </div>
-          <div style="margin-top:10px" class="small muted">Tip: After tests, edit names and percentages directly in the admin panel (or replace in HTML).</div>
-        </div>
-
-        <div class="card" style="margin-top:12px">
-          <h4 class="small">Quick Links</h4>
-          <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
-            <a class="ghost" href="#rules">Rules</a>
-            <a class="ghost" href="#whitelist">Whitelisted</a>
-            <a class="ghost" href="#gvg">GvG Victories</a>
+          <div class="stat">
+            <h3 id="active">0</h3>
+            <p>Active Today</p>
+          </div>
+          <div class="stat">
+            <h3 id="nextEvent">5 Oct</h3>
+            <p>Next Event</p>
+          </div>
+          <div class="stat">
+            <h3>8:30 PM</h3>
+            <p>GvG Daily</p>
           </div>
         </div>
       </aside>
     </section>
 
-    <!-- Features -->
-    <section id="features" style="margin-top:18px;">
-      <div class="features">
-        <div class="feature card">
-          <h4>Verified Whitelist</h4>
-          <div class="muted small">Trusted members only — owner-approved accounts with special perks.</div>
+    <!-- RANKING -->
+    <section id="ranking" class="card">
+      <h3>Top 24 Members — Live Alignment</h3>
+      <div id="leaderboard"></div>
+      <small style="color:var(--muted);display:block;margin-top:10px">Edit the `players` array in the script to set names/percentages.</small>
+    </section>
+
+    <!-- TOURNAMENTS -->
+    <section id="tournaments" class="card">
+      <h3>Tournaments</h3>
+      <div class="tournaments">
+        <div class="t-item">
+          <div class="t-title">
+            <div><strong>Syco Cup — Season 1</strong><div style="color:var(--muted);font-size:13px">Date: 5 Oct 2025 • Mode: Squad</div></div>
+            <div class="soon">Active</div>
+          </div>
+          <p style="color:var(--muted);margin-top:8px">Prize: 500 Diamonds</p>
+          <div class="apply">
+            <button class="apply-btn" data-target="links-1">Apply Now</button>
+          </div>
+          <div class="apply-links" id="links-1">
+            <a class="social-btn discord" href="https://discord.gg/fPmvEtD953" target="_blank" rel="noopener">
+              <!-- Discord SVG -->
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M7.2 14.5c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm9.6 0c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zM12 2C6.48 2 2 6.48 2 12c0 4 2.44 7.41 5.85 8.87L8.1 20.6c-1.04-.45-1.98-.99-2.82-1.6 0 0 2.06.9 5.72.9 3.66 0 5.72-.9 5.72-.9-.84.61-1.78 1.15-2.82 1.6l.25.27C19.56 19.41 22 16 22 12 22 6.48 17.52 2 12 2z"/></svg>
+              Join Discord
+            </a>
+            <a class="social-btn whatsapp" href="https://chat.whatsapp.com/JQqq99NgMsSG0vtrN7pZSA" target="_blank" rel="noopener">
+              <!-- WhatsApp SVG -->
+              <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M256 48C141.31 48 48 141.31 48 256c0 45.9 13.23 88.45 36.14 124.97L32 480l101.07-52.31C168.88 438.6 211.5 448 256 448 370.69 448 464 354.69 464 240 464 125.31 370.69 32 256 32zM183.6 169.7c5.7-4.8 11.7-4.8 17.8-2 8.3 3.7 16.9 7.2 24.6 11.2 5.5 3 10.6 6.9 16.3 8.9 4.2 1.6 10.1 1.1 14 0 7.5-1.9 14.4-6.7 21-11 6.4-4.1 12.6-3.6 18.9 1.2 5.7 4.3 11.3 8.9 16.8 13.5 1.9 1.7 2 4.8.1 6.5-7.8 7.1-15.8 13.9-24.8 19.9-16 10.7-33.3 19.2-50.7 27.7-10 4.9-20.7 8.6-30.9 13.6-12.8 6.5-24 15.2-36.6 22-10.6 5.8-20.9 1.2-28.5-6.2-6.9-6.7-12.2-14.7-15.9-23.9-6.6-16.9-8.1-35.1-2.1-52.1 4.1-10.4 11.6-19 20-26 13.1-11.4 28.4-19.9 43.7-29.7 3.8-2.3 7.8-5 12.2-6.9 5.7-2.6 11.9-3.9 17.9-6.1z"/></svg>
+              Join WhatsApp
+            </a>
+          </div>
         </div>
-        <div class="feature card">
-          <h4>Daily Rankings</h4>
-          <div class="muted small">Alignment tests produce a ranked board updated after each session.</div>
+
+        <!-- other tournaments -->
+        <div class="t-item">
+          <div class="t-title">
+            <div><strong>NOT HUMEN Clash</strong><div style="color:var(--muted);font-size:13px">12 Oct 2025 • Duo</div></div>
+            <div class="soon">[SOON]</div>
+          </div>
+          <p style="color:var(--muted);margin-top:8px">Prize: Custom Room Card</p>
         </div>
-        <div class="feature card">
-          <h4>Events & Giveaways</h4>
-          <div class="muted small">Regular GvG events, tournaments, and rewards for top players.</div>
+
+        <div class="t-item">
+          <div class="t-title">
+            <div><strong>Elite Battle</strong><div style="color:var(--muted);font-size:13px">20 Oct 2025 • Solo</div></div>
+            <div class="soon">[SOON]</div>
+          </div>
+          <p style="color:var(--muted);margin-top:8px">Prize: Guild Shoutout</p>
         </div>
       </div>
     </section>
 
-    <!-- Rules / Notice -->
-    <section id="rules" style="margin-top:18px;">
-      <div class="card">
-        <h3 class="small">Rules & Conduct</h3>
-        <ul class="small muted" style="margin-top:10px;line-height:1.6">
-          <li>No cheating, panels, or hacking discussions.</li>
-          <li>Only winning screenshots in dedicated channels.</li>
-          <li>Respect admins & final rankings — no arguments.</li>
-          <li>Whitelist is owner-approved only; violations lead to removal.</li>
-        </ul>
+    <!-- EVENTS -->
+    <section id="events" class="card">
+      <h3>Events</h3>
+      <div class="events-grid">
+        <div class="event"><strong>Daily GvG</strong><p class="muted">Every day • 8:30 PM</p></div>
+        <div class="event"><strong>Weekly Scrims</strong><p class="muted">Sundays • 9:00 PM</p></div>
+        <div class="event"><strong>Monthly Tournament</strong><p class="muted">First Saturday • 8:00 PM</p></div>
       </div>
     </section>
 
-    <!-- Contact / Join -->
-    <section id="join" style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap">
-      <div class="card" style="flex:1;min-width:280px">
-        <h3 class="small">Want to join?</h3>
-        <p class="muted small">Click Join Discord and follow instructions — verify and attend alignment tests to earn ranking.</p>
-        <a class="btn" href="https://discord.gg/fPmvEtD953" target="_blank">Join Discord</a>
-      </div>
+    <!-- JOIN / ABOUT -->
+    <section id="join" style="margin-top:18px">
+      <div class="two-col">
+        <div class="card">
+          <h3>Want to Join?</h3>
+          <p class="muted">Follow instructions in Discord. Attend alignment tests to earn ranking.</p>
+          <div style="margin-top:12px">
+            <a class="big-btn" href="https://discord.gg/fPmvEtD953" target="_blank">Join Discord</a>
+            <a class="nav-link" href="https://youtu.be/lNXYOERUxjo?si=lqP2DA1hxXtgf68D" target="_blank">YouTube</a>
+          </div>
+        </div>
 
-      <div class="card" style="flex:1;min-width:280px">
-        <h3 class="small">Owner Channel</h3>
-        <p class="muted small">YouTube</p>
-        <a class="ghost" href="https://youtu.be/lNXYOERUxjo?si=lqP2DA1hxXtgf68D" target="_blank">Watch</a>
+        <div class="card contact">
+          <h3>About</h3>
+          <p class="muted">NOT HUMEN ⚡ Official Guild<br>Email: <b>sycobhai611@gmail.com</b></p>
+          <p style="margin-top:8px;color:var(--muted)">Owner: Syco</p>
+        </div>
       </div>
     </section>
 
@@ -210,24 +273,112 @@
     </footer>
   </div>
 
+  <!-- SCRIPTS -->
   <script>
-    // Populate top-24 leaderboard slots (editable in DOM or replaced programmatically)
+    // --------- CONFIG: edit players array to set leaderboard ---------
+    const players = [
+      {name:"ɴʜ  ꜱʏᴄᴏ  ⚡", pct:"98%"},
+      {name:"ɴʜ  ᴍɪᴀɴ  ⚡", pct:"95%"},
+      {name:"ɴʜ  ʀᴜᴏᴋ  ⚡", pct:"92%"},
+      {name:"ɴʜ  ᴀᴊᴊᴜ  ⚡", pct:"90%"},
+      {name:"ɴʜ  xʏʀᴏ  ⚡", pct:"89%"},
+      {name:"ɴʜ  ᴍᴏᴛᴜ  ⚡", pct:"88%"},
+      {name:"ɴʜ  ᴢᴏʀᴏ  ⚡", pct:"86%"},
+      {name:"ɴʜ  ꜱᴏᴏɴ  ⚡", pct:"85%"},
+      {name:"ɴʜ  ꜱᴏᴏɴ  ⚡", pct:"84%"},
+      {name:"ɴʜ  ꜱᴏᴏɴ  ⚡", pct:"83%"},
+      {name:"ɴʜ  ꜱᴏᴏɴ  ⚡", pct:"82%"},
+      {name:"ɴʜ  ꜱᴏᴏɴ  ⚡", pct:"81%"},
+      {name:"ɴʜ  ꜱᴏᴏɴ  ⚡", pct:"80%"},
+      {name:"ɴʜ  ꜱᴏᴏɴ  ⚡", pct:"79%"},
+      {name:"ɴʜ  ꜱᴏᴏɴ  ⚡", pct:"78%"},
+      {name:"ɴʜ  ꜱᴏᴏɴ  ⚡", pct:"77%"},
+      {name:"ɴʜ  ꜱᴏᴏɴ  ⚡", pct:"76%"},
+      {name:"ɴʜ  ꜱᴏᴏɴ  ⚡", pct:"75%"},
+      {name:"ɴʜ  ꜱᴏᴏɴ  ⚡", pct:"74%"},
+      {name:"ɴʜ  ꜱᴏᴏɴ  ⚡", pct:"73%"},
+      {name:"ɴʜ  ꜱᴏᴏɴ  ⚡", pct:"72%"},
+      {name:"ɴʜ  ꜱᴏᴏɴ  ⚡", pct:"71%"},
+      {name:"ɴʜ  ꜱᴏᴏɴ  ⚡", pct:"70%"},
+      {name:"ɴʜ  ꜱᴏᴏɴ  ⚡", pct:"69%"},
+    ];
+    // populate leaderboard (24 slots). If players < 24, blanks show.
     const board = document.getElementById('leaderboard');
-    for(let i=1;i<=24;i++){
-      const slot = document.createElement('div');
-      slot.className = 'slot';
-      slot.innerHTML = '<div class="pos">#'+i+'</div><div class="name">__________</div><div class="pct">__%</div>';
-      board.appendChild(slot);
+    for(let i=0;i<24;i++){
+      const p = players[i] || {name:"__________", pct:"__%"};
+      const el = document.createElement('div');
+      el.className = 'slot';
+      el.innerHTML = `<div class="pos">#${i+1}</div><div class="name">${p.name}</div><div class="pct">${p.pct}</div>`;
+      board.appendChild(el);
     }
 
-    // Small helpers (replaceable by real data later)
+    // year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    /* HOW TO EDIT:
-       - To change the top slots text: edit the innerText of .slot .name and .pct, or modify the HTML directly.
-       - To change invite links: replace the href values to your Discord/YouTube.
-       - If you want two-column compact leaderboard, adjust CSS .board grid-template-columns.
-    */
+    // Live counters: nice increment animation
+    let members = 1240; // starting number (edit)
+    let active = 320;   // starting number (edit)
+    const membersEl = document.getElementById('members');
+    const activeEl = document.getElementById('active');
+    const nextEventEl = document.getElementById('nextEvent');
+
+    // function to animate number to new value (simple)
+    function animateValue(el, start, end, duration=800){
+      const range = end - start;
+      let startTime = null;
+      function step(timestamp){
+        if(!startTime) startTime = timestamp;
+        const progress = Math.min((timestamp - startTime) / duration, 1);
+        el.textContent = Math.floor(start + range * progress).toLocaleString();
+        if(progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    // random live simulation (runs every 2s)
+    function randomUpdate(){
+      // members slowly grow
+      const add = Math.floor(Math.random()*6); // 0-5
+      const newMembers = members + add;
+      animateValue(membersEl, members, newMembers, 800);
+      members = newMembers;
+
+      // active fluctuates
+      const newActive = Math.max(3, Math.floor(Math.random()*60));
+      animateValue(activeEl, active, newActive, 600);
+      active = newActive;
+
+      // next event date/time could be updated dynamically; here we keep static or update occasionally
+      // nextEventEl.textContent = "5 Oct • 20:30"; // if you want changeable
+    }
+    // start
+    membersEl.textContent = members.toLocaleString();
+    activeEl.textContent = active;
+    setInterval(randomUpdate, 2000);
+
+    // TOURNAMENT APPLY toggle behavior (delegated)
+    document.addEventListener('click', function(e){
+      const t = e.target;
+      if(t.matches('.apply-btn')){
+        const id = t.getAttribute('data-target');
+        const el = document.getElementById(id);
+        if(!el) return;
+        if(el.style.display === 'flex' || el.style.display === 'block'){ el.style.display = 'none'; }
+        else { el.style.display = 'flex'; el.style.alignItems='center'; }
+      }
+    });
+
+    // Small accessibility: close opened links when clicking outside
+    document.addEventListener('click', function(e){
+      if(!e.target.closest('.t-item')) {
+        document.querySelectorAll('.apply-links').forEach(x=>x.style.display='none');
+      }
+    });
+
+    // Prevent closing when clicking inside links
+    document.querySelectorAll('.apply-links').forEach(el=>{
+      el.addEventListener('click', e=>e.stopPropagation());
+    });
   </script>
 </body>
 </html>
