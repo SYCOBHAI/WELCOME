@@ -158,10 +158,50 @@
       width: 20px;
       height: 20px;
     }
+
+    /* Optimization area styles (overlay-like but within same page) */
+    #optimizationPage {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(2,6,23,0.98), rgba(10,15,37,0.98));
+      z-index: 9999;
+      padding: 40px;
+      overflow-y: auto;
+      display: none; /* hidden by default */
+    }
+    #optimizationInner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    #optimizationPage .card {
+      background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+    }
+    .opt-back {
+      display:inline-block;
+      margin-bottom:18px;
+      color: #fff;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 8px 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .opt-back:hover { box-shadow: 0 0 18px rgba(0,198,255,0.2); transform: translateY(-2px);}
+    /* make the optimization section feel like a full page */
+    #optimizationPage h1, #optimizationPage h2, #optimizationPage h3 { color: var(--accent); text-shadow: 0 0 8px rgba(0,198,255,0.2); }
+    /* Responsive adjustments for big overlay */
+    @media (max-width: 900px) {
+      #optimizationPage { padding: 20px; }
+      .ctas { flex-direction: column; align-items: center; }
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
+  <div class="wrap" id="siteWrap">
     <!-- Header -->
     <header>
       <div class="brand">
@@ -176,6 +216,10 @@
         <a class="ghost" href="#tournaments">Tournaments</a>
         <a class="ghost" href="#events">Events</a>
         <a class="ghost" href="#join">Join</a>
+
+        <!-- NEW Optimization button (glowing like Discord) -->
+        <a class="btn" href="javascript:void(0)" id="openOptimizationBtn">Optimization</a>
+
         <a class="btn" href="https://discord.gg/fPmvEtD953" target="_blank">Discord</a>
       </nav>
     </header>
@@ -193,32 +237,18 @@
 
     <!-- Ranking -->
     <section id="ranking" class="card">
-      <h3>Top 24 Guild Members — Live Alignment</h3>
+      <h3>Top 10 Guild Members — Live Alignment's</h3>
       <div class="board">
         <div class="slot"><div class="pos">#1</div><div class="name">ɴʜ ꜱʏᴄᴏ ⚡ 98%</div></div>
         <div class="slot"><div class="pos">#2</div><div class="name">ɴʜ ᴍɪᴀɴ ⚡ 95%</div></div>
-        <div class="slot"><div class="pos">#3</div><div class="name">ɴʜ ʀᴜᴏᴋ ⚡ 92%</div></div>
-        <div class="slot"><div class="pos">#4</div><div class="name">ɴʜ ᴀᴊᴊᴜ ⚡ 90%</div></div>
-        <div class="slot"><div class="pos">#5</div><div class="name">ɴʜ xʏʀᴏ ⚡ 89%</div></div>
-        <div class="slot"><div class="pos">#6</div><div class="name">ɴʜ ᴍᴏᴛᴜ ⚡ 88%</div></div>
-        <div class="slot"><div class="pos">#7</div><div class="name">ɴʜ ᴢᴏʀᴏ ⚡ 86%</div></div>
-        <div class="slot"><div class="pos">#8</div><div class="name">ɴʜ ꜱᴏᴏɴ ⚡ 85%</div></div>
-        <div class="slot"><div class="pos">#9</div><div class="name">ɴʜ ꜱᴏᴏɴ ⚡ 84%</div></div>
-        <div class="slot"><div class="pos">#10</div><div class="name">ɴʜ ꜱᴏᴏɴ ⚡ 83%</div></div>
-        <div class="slot"><div class="pos">#11</div><div class="name">ɴʜ ꜱᴏᴏɴ ⚡ 82%</div></div>
-        <div class="slot"><div class="pos">#12</div><div class="name">ɴʜ ꜱᴏᴏɴ ⚡ 81%</div></div>
-        <div class="slot"><div class="pos">#13</div><div class="name">ɴʜ ꜱᴏᴏɴ ⚡ 80%</div></div>
-        <div class="slot"><div class="pos">#14</div><div class="name">ɴʜ ꜱᴏᴏɴ ⚡ 79%</div></div>
-        <div class="slot"><div class="pos">#15</div><div class="name">ɴʜ ꜱᴏᴏɴ ⚡ 78%</div></div>
-        <div class="slot"><div class="pos">#16</div><div class="name">ɴʜ ꜱᴏᴏɴ ⚡ 77%</div></div>
-        <div class="slot"><div class="pos">#17</div><div class="name">ɴʜ ꜱᴏᴏɴ ⚡ 76%</div></div>
-        <div class="slot"><div class="pos">#18</div><div class="name">ɴʜ ꜱᴏᴏɴ ⚡ 75%</div></div>
-        <div class="slot"><div class="pos">#19</div><div class="name">ɴʜ ꜱᴏᴏɴ ⚡ 74%</div></div>
-        <div class="slot"><div class="pos">#20</div><div class="name">ɴʜ ꜱᴏᴏɴ ⚡ 73%</div></div>
-        <div class="slot"><div class="pos">#21</div><div class="name">ɴʜ ꜱᴏᴏɴ ⚡ 72%</div></div>
-        <div class="slot"><div class="pos">#22</div><div class="name">ɴʜ ꜱᴏᴏɴ ⚡ 71%</div></div>
-        <div class="slot"><div class="pos">#23</div><div class="name">ɴʜ ꜱᴏᴏɴ ⚡ 70%</div></div>
-        <div class="slot"><div class="pos">#24</div><div class="name">ɴʜ ꜱᴏᴏɴ ⚡ 69%</div></div>
+        <div class="slot"><div class="pos">#3</div><div class="name">ɴʜ ᴅᴍᴏɴ ⚡ 92%</div></div>
+        <div class="slot"><div class="pos">#4</div><div class="name">ɴʜ ʀᴜᴏᴋ ⚡ 90%</div></div>
+        <div class="slot"><div class="pos">#5</div><div class="name">ɴʜ ᴀᴊᴊᴜ ⚡ 89%</div></div>
+        <div class="slot"><div class="pos">#6</div><div class="name">ɴʜ ᴘᴀɴᴇʟ ⚡ 88%</div></div>
+        <div class="slot"><div class="pos">#7</div><div class="name">ɴʜ xʏʀᴏ ⚡ 86%</div></div>
+        <div class="slot"><div class="pos">#8</div><div class="name">ɴʜ ᴍᴏᴛᴜ ⚡ 85%</div></div>
+        <div class="slot"><div class="pos">#9</div><div class="name">ɴʜ ᴢᴏʀᴏ ⚡ 84%</div></div>
+        <div class="slot"><div class="pos">#10</div><div class="name">ɴʜ ᴅᴇᴀᴅ ⚡ 83%</div></div>
       </div>
     </section>
 
@@ -229,7 +259,7 @@
         <div class="pos">Syco Cup Br</div>
         <div class="name">Season 1 — Mode: squad — Prize: 5000 Rupees</div>
         <div id="applyArea">
-          <a class="btn" href="javascript:void(0)" onclick="showLinks()">Apply Now</a>
+          <a class="btn" href="javascript:void(0)" onclick="showApplyLinks()">Apply Now</a>
         </div>
       </div>
       <div class="slot">
@@ -269,11 +299,49 @@
     </footer>
   </div>
 
+  <!-- Optimization Page (hidden overlay within same page) -->
+  <div id="optimizationPage" aria-hidden="true">
+    <div id="optimizationInner">
+      <a class="opt-back" id="closeOptimizationBtn">← Back to Guild</a>
+      <section class="card">
+        <h3>⚡ Syco Optimization</h3>
+        <p style="color:#9aa0a6;margin-bottom:18px">Hack the Performance • Boost Your Game</p>
+
+        <div style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:16px">
+          <a class="btn" href="#" id="downloadAll">Download All</a>
+          <a class="btn" href="#" id="optFAQ">FAQ</a>
+        </div>
+
+        <div class="features">
+          <div class="card">
+            <h4>🖥️ PC Optimization</h4>
+            <p>Custom regedit files and BlueStacks configs to maximize Free Fire performance on PC.</p>
+            <a href="#" class="btn" onclick="alert('Update Soon')">Download for PC</a>
+          </div>
+          <div class="card">
+            <h4>📱 Android Optimization</h4>
+            <p>Boosted sensitivity, config files, and performance tweaks designed for Android gamers.</p>
+            <a href="#" class="btn" onclick="alert('Update Soon')">Download for Android</a>
+          </div>
+          <div class="card">
+            <h4>🍏 iPhone Optimization</h4>
+            <p>Smooth gaming tweaks for iPhone users. Unlock better response time and reduced lag.</p>
+            <a href="#" class="btn" onclick="alert('Update Soon')">Download for iPhone</a>
+          </div>
+        </div>
+
+        <div style="margin-top:18px;color:var(--muted)">
+          <p><strong>Note:</strong> Replace the download `href="#"` with your real files. Files are intentionally not linked here for safety.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+
   <script>
     document.getElementById('year').textContent=new Date().getFullYear();
 
-    // Show links after Apply click
-    function showLinks(){
+    // Tournament apply links (original behavior)
+    function showApplyLinks(){
       const applyArea = document.getElementById("applyArea");
       applyArea.innerHTML = `
         <div class="links">
@@ -283,13 +351,49 @@
           <a class="whatsapp" href="https://chat.whatsapp.com/JQqq99NgMsSG0vtrN7pZSA" target="_blank">
             <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="whatsapp"/> WhatsApp
           </a>
-          <a class="youtube" href="https://youtube.com" target="_blank">
+          <a class="youtube" href="https://youtu.be/77tPfohIrAA" target="_blank">
             <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="youtube"/> YouTube
           </a>
         </div>
       `;
     }
+
+    // OPEN optimization overlay (same page, no new tab) — preserves rest of site
+    const openBtn = document.getElementById('openOptimizationBtn');
+    const optPage = document.getElementById('optimizationPage');
+    const closeBtn = document.getElementById('closeOptimizationBtn');
+    const siteWrap = document.getElementById('siteWrap');
+
+    openBtn.addEventListener('click', function(e){
+      e.preventDefault();
+      // show overlay
+      optPage.style.display = 'block';
+      optPage.setAttribute('aria-hidden', 'false');
+      // optional: prevent background scroll
+      document.body.style.overflow = 'hidden';
+      // scroll to top of overlay
+      optPage.scrollTop = 0;
+    });
+
+    closeBtn.addEventListener('click', function(e){
+      e.preventDefault();
+      optPage.style.display = 'none';
+      optPage.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = ''; // restore
+      // focus back to top of site
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Optional: close overlay when pressing ESC
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape'){
+        if(optPage.style.display === 'block'){
+          optPage.style.display = 'none';
+          optPage.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = '';
+        }
+      }
+    });
   </script>
 </body>
 </html>
-
